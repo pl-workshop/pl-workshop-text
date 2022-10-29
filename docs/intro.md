@@ -2,46 +2,53 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# はじめに
 
-Let's discover **Docusaurus in less than 5 minutes**.
+## プログラミング言語処理系の仕組み
+私達がこれから作る言語処理系は、与えられたプログラム(=文字列)を、構文解析して抽象構文木へと変換し、その抽象構文木を再帰的に評価します。(この方式を**tree-walking型インタプリタ**と言います。)
 
-## Getting Started
+今の説明を図にすると、以下の通りになります。
 
-Get started by **creating a new site**.
+![フロー](img/pl-flow.drawio.svg)
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+## 構文解析
+構文解析(Parsing)とは、文字列として与えられたプログラムを、コンピュータにとって取り扱いやすい木構造へと変換することです。
 
-### What you'll need
+具体例として、1+2を構文解析してみましょう。すると、以下のような木構造となります。
 
-- [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+![木構造1](img/tree_example.drawio.svg)
 
-## Generate a new site
+1+2+3ならどうなるでしょう。左から順に計算するとすると...？
 
-Generate a new Docusaurus site using the **classic template**.
+![木構造2](img/tree_example2.drawio.svg)
 
-The classic template will automatically be added to your project after you run the command:
+このように、先に計算する部分ほど、木の深い場所に位置します。
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+こうして出来た木のことを、**抽象構文木**(AST, Abstract Syntax Tree)と言います。
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+## 評価
+次に、構文解析して出来たASTを、評価関数で再帰的に評価(evaluate)します。先程の足し算の例で考えてみましょう。
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+足し算の評価規則は、例えば次のようなものです。
+1. +演算子の左側の式を**評価**する
+1. +演算子の右側の式を**評価**する
+1. 1で評価された値と、2で評価された値を足す
 
-## Start your site
+評価規則に、**評価**という言葉が出てくることに注意してください。これは、この評価規則が再帰的であることを示しています。
 
-Run the development server:
+(再帰について知っている人は、上の評価規則の**基底部**がどこにあるのか気になるかもしれません。この場合、基底部は数字自体になります。)
 
-```bash
-cd my-website
-npm run start
-```
+それでは、1+2+3を構文解析して出来た以下のASTを評価してみましょう。
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+![木構造2](img/tree_example2.drawio.svg)
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+まず、木の頂上に位置する+の左側の木を評価します。
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+![木構造1](img/tree_example.drawio.svg)
+
+この木の左側を評価すると1、右側を評価すると2になるので、この木を評価した結果は**3**(=1+2)となります。
+
+次に、1+2+3のASTの頂上に位置する+の右側を評価すると、3になります。
+最後に、左側と右側の木の評価結果を足した**6**(=3+3)が全体の評価結果となります。
+
+評価、再帰のイメージは掴めましたでしょうか？それでは、実際に言語処理系を書いていきましょう！
