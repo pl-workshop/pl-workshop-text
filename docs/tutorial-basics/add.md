@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Create a Document
+# 足し算を追加しよう
 
 Documents are **groups of pages** connected through:
 

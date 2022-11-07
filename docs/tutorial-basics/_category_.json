@@ -1,8 +1,8 @@
 {
-  "label": "Tutorial - Basics",
+  "label": "括弧を含む四則演算が出来る電卓を作ろう",
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "5 minutes to learn the most important Docusaurus concepts."
+    "description": "まず最初に、括弧を含む四則演算の処理が出来る言語処理系を作っていきます。"
   }
 }
