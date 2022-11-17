@@ -46,6 +46,20 @@ Expression = e1: Factor e2: ("+" Factor)* {
     return result
 }
 ```
+
+このプログラムが何をしているのか分かりにくければ、次のようにconsole.logを挿入し、f12を押して開発者ツールを起動して、コンソールでeに何が入っているのか見てみましょう。
+```javascript
+Expression = e1: Factor e2: ("+" Factor)* {
+    let result = e1
+    for (const e of e2) {
+        console.log(e)
+        result = {tag: "Add", lh: result, rh: e[1]}
+    }
+    return result
+}
+```
+このように、分からない箇所があったら、console.logを使って変数の中に何が入っているのか確認してみましょう。
+
 それでは、実際に数式を入力に入れて試して見ましょう。期待した結果は出ましたか？ここで、例えば1+2+3の場合、1+2の部分木が木のより深い位置にあることに注意してください。
 
 ## 評価
