@@ -47,7 +47,7 @@ Expression = e1: Factor e2: ("+" Factor)* {
 }
 ```
 
-このプログラムが何をしているのか分かりにくければ、次のようにconsole.logを挿入し、f12を押して開発者ツールを起動して、コンソールでeに何が入っているのか見てみましょう。
+このプログラムが何をしているのか分かりにくければ、次のようにconsole.logを挿入し、F12を押して開発者ツールを起動して、コンソールでeに何が入っているのか見てみましょう。
 ```javascript
 Expression = e1: Factor e2: ("+" Factor)* {
     let result = e1

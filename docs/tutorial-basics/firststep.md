@@ -8,7 +8,7 @@ sidebar_position: 1
 **以下リロードをすると書いたプログラムが消えてしまいます。気をつけて下さい。**
 
 ## 構文解析
-今回は、構文解析に**peg.js**というライブラリを用います。PEG([Parsing Expression Grammer](https://ja.wikipedia.org/wiki/Parsing_Expression_Grammar))によって定義された文法からパーサーを作るライブラリです。[playground](https://pl-workshop.github.io/pl-workshop/)を開くと、文法定義部に、次のようなコードが書かれています。
+今回は、構文解析に**PEG.js**というライブラリを用います。PEG([Parsing Expression Grammer](https://ja.wikipedia.org/wiki/Parsing_Expression_Grammar))によって定義された文法からパーサーを作るライブラリです。[playground](https://pl-workshop.github.io/pl-workshop/)を開くと、文法定義部に、次のようなコードが書かれています。
 ```javascript
 start = Expression
 Expression = Factor
@@ -53,4 +53,4 @@ astを受け取るeval関数が定義されています。eval関数の中では
 
 このeval関数が、評価時のエントリーポイントになるようにこのツールは作られています。
 
-それでは、**eval!**ボタンを押してみましょう。評価結果に、入力した数字が表示されているはずです。
+それでは、**Eval!**ボタンを押してみましょう。評価結果に、入力した数字が表示されているはずです。
