@@ -21,7 +21,7 @@ sidebar_position: 4
 <summary>example</summary>
 
 ```javascript
-Factor = "(" e: Expr ")" {
+Factor = "(" e: Expression ")" {
     return e
 } / num: Integer {
     return {tag: "Number", value: num}
