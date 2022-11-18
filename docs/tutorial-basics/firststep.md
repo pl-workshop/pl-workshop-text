@@ -5,6 +5,8 @@ sidebar_position: 1
 # はじめの一歩
 まずは、数字のみをパースし、評価する言語処理系を見ながら、ツールの使い方を学びましょう。
 
+playgroundのURL: https://pl-workshop.github.io/pl-workshop/ を開いて下さい。
+
 **以下リロードをすると書いたプログラムが消えてしまいます。気をつけて下さい。**
 
 ## 構文解析
