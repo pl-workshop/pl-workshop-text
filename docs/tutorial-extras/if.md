@@ -17,14 +17,14 @@ if 条件式 then 条件が真の時実行される式 else 条件が偽の時�
 
 よって等号や不等号の文法は次のようになります。
 ```
-Compare = Expression ("<" / ">" / "==") Expression
+Compare = Expression ("<" / ">" / "==") Expression / Expression
 ```
 
 ASTに変換する部分は容易に書けます。"<", ">", "=="のtagはそれぞれLT, GT, EQ等が良いでしょう。
 
 それでは、if式の方の構文解析に取り掛かります。これもシンプルです。
 ```
-IfExpr = "if " _ Compare _ "then " _ Compare _ "else " _ Compare
+IfExpr = "if " _ Compare _ "then " _ Compare _ "else " _ Compare / Compare
 ```
 (`_`は0個以上の空白、改行を無視するために入っています。)
 
