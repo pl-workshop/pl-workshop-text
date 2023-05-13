@@ -52,6 +52,7 @@ Expression = e1: Factor e2: ("+" Factor)* {
 Expression = e1: Factor e2: ("+" Factor)* {
     let result = e1
     for (const e of e2) {
+        // highlight-next-line
         console.log(e)
         result = {tag: "Add", lh: result, rh: e[1]}
     }
